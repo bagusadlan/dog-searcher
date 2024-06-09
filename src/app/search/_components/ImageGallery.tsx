@@ -1,19 +1,24 @@
-import React, { Dispatch, SetStateAction } from 'react'
-import Image from 'next/image'
-import { WobbleCard } from '@/components/ui/wobble-card'
-import { images } from './data'
+'use client'
+
+import { useState } from 'react'
 import Card from './Card'
+import Modal from './Modal'
 
 type Props = {
-  setSelected: Dispatch<SetStateAction<string>>
+  images: string[]
 }
 
-export default function ImageGallery({ setSelected }: Props) {
+export default function ImageGallery({ images }: Props) {
+  const [selected, setSelected] = useState<string>('')
+
   return (
-    <div className="columns gap-2 sm:columns-2 md:columns-3 lg:columns-4">
-      {images.map((item, index) => (
-        <Card key={index} url={item} setSelected={setSelected} />
-      ))}
-    </div>
+    <>
+      <div className="columns gap-2 sm:columns-2 md:columns-3 lg:columns-4">
+        {images.map((item, index) => (
+          <Card key={index} url={item} onClick={setSelected} />
+        ))}
+      </div>
+      <Modal selected={selected} setSelected={setSelected} />
+    </>
   )
 }

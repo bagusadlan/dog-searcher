@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { motion } from 'framer-motion'
 
 type Props = {
@@ -12,17 +12,21 @@ export default function Modal({ selected, setSelected }: Props) {
 
   return (
     <div
-      className="fixed flex inset-0 z-50 bg-black/50 cursor-pointer max-h-[100dvh] items-center justify-center"
+      className="fixed inset-0 z-50 bg-black/50 cursor-pointer flex items-center justify-center max-h-[100dvh] py-8"
       onClick={() => setSelected('')}
     >
-      <motion.div layoutId={`card-${selected}`} transition={{ duration: 0.3 }} className='max-w-[700px]'>
+      <motion.div
+        layoutId={`card-${selected}`}
+        transition={{ duration: 0.3 }}
+        className="flex items-center justify-center max-w-[700px] mx-2"
+      >
         <Image
           src={selected}
-          width={1000}
-          height={1000}
+          className="bg-base-100 cursor-default"
+          width={400}
+          height={400}
           alt="Dog image"
           onClick={(e) => e.stopPropagation()}
-          className="w-full image-full bg-base-100 cursor-default"
         />
       </motion.div>
     </div>
