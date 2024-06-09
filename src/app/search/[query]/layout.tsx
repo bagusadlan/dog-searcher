@@ -9,7 +9,7 @@ export default function SearchLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className="container py-8 text-center">
+    <main className="container py-12 md:py-20 text-center">
       <div className="flex justify-end mb-8">
         <Link href="/">
           <Button type="submit">Back</Button>
